@@ -29,7 +29,7 @@ class DataCleaner(DataProcessor):
         Initialize DataCleaner.
         
         Args:
-            fill_strategy: Strategy for filling missing values ('mean', 'median', 'mode', 'drop')
+            fill_strategy: Strategy for filling missing values ('mean', 'median', 'drop')
         """
         self.fill_strategy = fill_strategy
         

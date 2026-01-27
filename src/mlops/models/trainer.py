@@ -1,6 +1,5 @@
 """Model training module with versioning support."""
 import logging
-import pickle
 from abc import ABC, abstractmethod
 from datetime import datetime
 from pathlib import Path

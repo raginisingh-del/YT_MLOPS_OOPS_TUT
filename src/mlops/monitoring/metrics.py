@@ -123,6 +123,11 @@ class DataDriftDetector:
             
         Returns:
             Dictionary of statistics
+        
+        Note:
+            Uses simple mean/std comparison for drift detection.
+            For production use, consider more sophisticated methods like
+            Kolmogorov-Smirnov test or Population Stability Index (PSI).
         """
         stats = {}
         for col in data.select_dtypes(include=[np.number]).columns:
