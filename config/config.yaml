@@ -1,0 +1,42 @@
+# MLOps Pipeline Configuration
+
+# Data Processing
+data:
+  raw_data_path: "data/raw"
+  processed_data_path: "data/processed"
+  test_size: 0.2
+  val_size: 0.1
+  random_state: 42
+
+# Model Training
+training:
+  model_type: "random_forest"
+  hyperparameters:
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+  experiment_name: "ml_pipeline_experiment"
+  
+# Model Versioning
+versioning:
+  tracking_uri: "mlruns"
+  
+# Deployment
+deployment:
+  model_registry_path: "models"
+  default_environment: "production"
+  
+# Monitoring
+monitoring:
+  log_dir: "logs/monitoring"
+  drift_threshold: 0.1
+  alert_thresholds:
+    accuracy_threshold: 0.7
+    precision_threshold: 0.7
+    recall_threshold: 0.7
+    f1_score_threshold: 0.7
+
+# Logging
+logging:
+  level: "INFO"
+  log_file: "logs/mlops.log"
