@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mlops-pipeline:
+    build: .
+    container_name: mlops-pipeline
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+      - ./mlruns:/app/mlruns
+    environment:
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "5000:5000"
+    command: python examples/pipeline_example.py
+
+  mlflow-ui:
+    build: .
+    container_name: mlflow-ui
+    volumes:
+      - ./mlruns:/app/mlruns
+    ports:
+      - "5001:5000"
+    command: mlflow ui --host 0.0.0.0 --port 5000 --backend-store-uri file:///app/mlruns

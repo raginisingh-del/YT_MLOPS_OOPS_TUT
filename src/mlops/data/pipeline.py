@@ -52,9 +52,9 @@ class DataCleaner(DataProcessor):
             for col in df.select_dtypes(include=[np.number]).columns:
                 if df[col].isnull().any():
                     if self.fill_strategy == "mean":
-                        df[col].fillna(df[col].mean(), inplace=True)
+                        df.loc[:, col] = df[col].fillna(df[col].mean())
                     elif self.fill_strategy == "median":
-                        df[col].fillna(df[col].median(), inplace=True)
+                        df.loc[:, col] = df[col].fillna(df[col].median())
                         
         logger.info(f"Data cleaned. Shape: {df.shape}")
         return df
